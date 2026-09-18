@@ -11,6 +11,7 @@ async function processData(apiPromiseData) {
       sunset: apiData.currentConditions.sunset,
       days: apiData.days,
       address: apiData.resolvedAddress,
+      icon: apiData.currentConditions.icon,
     };
     console.log(weatherData);
   }
