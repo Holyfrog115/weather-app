@@ -3,7 +3,27 @@ import { getApiData } from "./weatherapi.js";
 
 async function processData(apiPromiseData) {
   const apiData = await apiPromiseData;
-  console.log(apiData);
+  if (apiData) {
+    const weatherData = {
+      time: apiData.currentConditions.datetime,
+      temp: apiData.currentConditions.temp,
+      sunrise: apiData.currentConditions.sunrise,
+      sunset: apiData.currentConditions.sunset,
+      days: apiData.days,
+      address: apiData.resolvedAddress,
+    };
+    console.log(weatherData);
+  }
 }
 
-processData(getApiData("Barnaul"));
+function setupSearch() {
+  const search = document.querySelector("#locationSearch");
+  const searchBtn = document.querySelector("#searchBtn");
+  searchBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const location = search.value;
+    processData(getApiData(location));
+  });
+}
+
+setupSearch();
