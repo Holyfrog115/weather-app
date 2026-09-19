@@ -14,6 +14,8 @@ const iconToCondition = {
   wind: "Wind",
 };
 
+let location;
+
 async function processData(apiPromiseData) {
   const loadStatus = document.querySelector(".loadStatus");
   loadStatus.classList.remove("hidden");
@@ -63,9 +65,23 @@ function setupSearch() {
   const searchBtn = document.querySelector("#searchBtn");
   searchBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    const location = search.value;
+    location = search.value;
     processData(getApiData(location));
   });
 }
 
+async function defaultLocation() {
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    if (!res.ok) throw new Error("IP lookup failed");
+    const data = await res.json();
+    processData(getApiData(data.city));
+    location = data.city;
+  } catch {
+    processData(getApiData("London"));
+    location = "London";
+  }
+}
+
 setupSearch();
+defaultLocation();
