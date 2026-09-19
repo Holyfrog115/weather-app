@@ -2,32 +2,23 @@ import "./styles.css";
 import { getApiData } from "./weatherapi.js";
 import weatherIcons from "./importIcons.js";
 
+const iconToCondition = {
+  "clear-day": "Clear",
+  "clear-night": "Clear",
+  "partly-cloudy-day": "Partly Cloudy",
+  "partly-cloudy-night": "Partly Cloudy",
+  cloudy: "Cloudy",
+  rain: "Rain",
+  snow: "Snow",
+  fog: "Fog",
+  wind: "Wind",
+};
+
 async function processData(apiPromiseData) {
+  const loadStatus = document.querySelector(".loadStatus");
+  loadStatus.classList.remove("hidden");
   const apiData = await apiPromiseData;
   if (apiData) {
-    console.log(apiData);
-    const weatherData = {
-      time: apiData.currentConditions.datetime,
-      temp: apiData.currentConditions.temp,
-      sunrise: apiData.currentConditions.sunrise,
-      sunset: apiData.currentConditions.sunset,
-      days: apiData.days,
-      address: apiData.address,
-      icon: apiData.currentConditions.icon,
-    };
-
-    const iconToCondition = {
-      "clear-day": "Clear",
-      "clear-night": "Clear",
-      "partly-cloudy-day": "Partly Cloudy",
-      "partly-cloudy-night": "Partly Cloudy",
-      cloudy: "Cloudy",
-      rain: "Rain",
-      snow: "Snow",
-      fog: "Fog",
-      wind: "Wind",
-    };
-
     const address = document.querySelector("#address");
     const temp = document.querySelector("#temp");
     const conditionName = document.querySelector(".condition-name");
@@ -36,7 +27,7 @@ async function processData(apiPromiseData) {
     const weekDays = document.querySelectorAll(".weekDay");
     let weekDayNum = 0;
 
-    address.textContent = apiData.address;
+    address.textContent = apiData.resolvedAddress.split(",")[0];
 
     if (apiData.currentConditions.temp > 0) {
       temp.textContent = `+${apiData.currentConditions.temp}°C`;
@@ -64,6 +55,7 @@ async function processData(apiPromiseData) {
       weekDayNum++;
     });
   }
+  loadStatus.classList.add("hidden");
 }
 
 function setupSearch() {

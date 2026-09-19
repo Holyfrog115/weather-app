@@ -17,13 +17,16 @@
     </header>
     <main>
       <form>
-        <input
-          type="search"
-          name="location"
-          id="locationSearch"
-          placeholder="Enter your location..."
-        />
-        <button type="submit" id="searchBtn">Search</button>
+        <div class="search">
+          <input
+            type="search"
+            name="location"
+            id="locationSearch"
+            placeholder="Enter your location..."
+          />
+          <button type="submit" id="searchBtn">Search</button>
+        </div>
+        <div class="searchError hidden"></div>
       </form>
       <div class="weatherData">
         <div class="currentData">
@@ -69,6 +72,7 @@
           </div>
         </div>
       </div>
+      <div class="loadStatus hidden">Loading...</div>
     </main>
   </body>
 </html>

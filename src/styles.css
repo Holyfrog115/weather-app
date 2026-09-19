@@ -97,9 +97,10 @@ main {
 }
 
 main form {
-  display: flex;
+  display: grid;
   gap: 8px;
-  margin-bottom: 48px;
+  grid-template-rows: 1fr 1fr;
+  margin-bottom: 12px;
 }
 
 header {
@@ -139,7 +140,7 @@ header {
   width: 480px;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 0 128px -28px #6bdfdb;
+  box-shadow: 0 0 128px -16px #6bdfdb;
 }
 
 /* Current Data */
@@ -214,4 +215,34 @@ header {
 .weekDay img {
   height: 30px;
   width: 30px;
+}
+
+.loadStatus {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 4px 16px;
+  margin-top: 24px;
+  box-shadow: 0 0 128px 12px #6bdfdb;
+  display: flex;
+}
+
+.loadStatus.hidden {
+  display: none;
+}
+
+.searchError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-weight: bold;
+  background-color: white;
+  width: 45%;
+  justify-self: center;
+  border-radius: 8px;
+}
+
+.searchError.hidden {
+  display: none;
 }
