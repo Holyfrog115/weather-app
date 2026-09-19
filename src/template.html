@@ -23,12 +23,17 @@
             name="location"
             id="locationSearch"
             placeholder="Enter your location..."
+            autocomplete="off"
           />
           <button type="submit" id="searchBtn">Search</button>
         </div>
         <div class="searchError hidden"></div>
       </form>
       <div class="weatherData">
+        <div class="CFbtns">
+          <button id="celsius" data-unitGroup="metric">C</button>
+          <button id="fahrenheit" class="hidden" data-unitGroup="us">F</button>
+        </div>
         <div class="currentData">
           <h2 id="address"></h2>
           <div class="weather">

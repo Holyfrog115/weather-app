@@ -246,3 +246,37 @@ header {
 .searchError.hidden {
   display: none;
 }
+
+.CFbtns {
+  position: absolute;
+}
+
+.CFbtns button {
+  background-color: rgb(233, 238, 239);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.CFbtns button:hover {
+  cursor: pointer;
+  background-color: rgb(218, 221, 222);
+}
+
+#celsius {
+  position: relative;
+}
+
+#celsius.hidden {
+  display: none;
+}
+
+#fahrenheit {
+  position: relative;
+}
+
+#fahrenheit.hidden {
+  display: none;
+}
